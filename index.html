@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta name="title" content="World Translation: Minimizing Sim-to-Real Gap with Backward Dynamics Extraction and Unpaired Domain Translation">
+  <meta name="description" content="World Translation minimizes the sim-to-real gap by combining backward dynamics extraction with unpaired domain translation over learned dynamics features. RSS 2026.">
+  <meta name="keywords" content="sim-to-real, robotics, dynamics model, domain translation, reinforcement learning, robot learning, hidden variables, CycleGAN, RSS 2026">
+  <meta name="author" content="Anonymous Authors">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <meta property="og:type" content="article">
+  <meta property="og:title" content="World Translation: Minimizing Sim-to-Real Gap">
+  <meta property="og:description" content="World Translation minimizes the sim-to-real gap by combining backward dynamics extraction with unpaired domain translation over learned dynamics features.">
+  <meta property="og:image" content="static/images/cover.png">
+
+  <meta name="citation_title" content="World Translation: Minimizing Sim-to-Real Gap with Backward Dynamics Extraction and Unpaired Domain Translation">
+  <meta name="citation_author" content="Anonymous Authors">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_conference_title" content="Robotics: Science and Systems 2026">
+  <meta name="citation_pdf_url" content="static/pdfs/paper.pdf">
+
+  <meta name="theme-color" content="#2563eb">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+  <title>World Translation | RSS 2026</title>
+
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <style>
+    .result-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    .result-row img {
+      flex: 1;
+      min-width: 0;
+      object-fit: contain;
+    }
+    .result-row .chart-col {
+      flex: 0 0 28%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.25rem;
+    }
+    .result-row .chart-col img {
+      width: 100%;
+    }
+    .platform-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: #1a1a2e;
+    }
+    .condition-label {
+      font-size: 0.8rem;
+      text-align: center;
+      color: #555;
+      margin-top: 0.25rem;
+    }
+    .result-platform {
+      margin-bottom: 2.5rem;
+    }
+    .method-figure {
+      display: flex;
+      justify-content: center;
+      margin: 1.5rem 0;
+    }
+    .method-figure img {
+      max-width: 80%;
+    }
+    .deployment-photos {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      margin-bottom: 1rem;
+    }
+    .deployment-photos img {
+      flex: 1;
+      max-width: 32%;
+      object-fit: cover;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <main id="main-content">
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">World Translation: Minimizing Sim-to-Real Gap with Backward Dynamics Extraction and Unpaired Domain Translation</h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><em>Anonymous Submission</em></span>
+            </div>
+            <div class="is-size-5 publication-authors" style="margin-top:0.4rem">
+              <span class="author-block">Robotics: Science and Systems 2026 &nbsp;&middot;&nbsp; Paper ID 350</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <span class="link-block">
+                  <a href="static/pdfs/paper.pdf" target="_blank"
+                  class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href="ref/WorldTranslationAppendix.pdf" target="_blank"
+                class="external-link button is-normal is-rounded is-dark">
+                <span class="icon"><i class="fas fa-file-pdf"></i></span>
+                <span>Supplementary</span>
+              </a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  </div>
+  </section>
+
+
+  <!-- Teaser video -->
+  <section class="hero teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <video id="teaser" autoplay controls muted loop height="100%" preload="metadata">
+          <source src="ref/WorldTranslationVideo.mp4" type="video/mp4">
+        </video>
+        <h2 class="subtitle has-text-centered">
+          <strong>World Translation</strong> combines a simulator (as a source of hidden variable information) with unpaired domain translation to bridge the sim-to-real gap in learned dynamics models.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Abstract -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              The simulation-to-reality gap remains a fundamental challenge in robotics, particularly under partial observability, where time-varying <em>hidden variables</em> — such as contact, collision, and external disturbances — significantly affect dynamics but cannot be predicted from observation history. Learned dynamics models offer a promising path to minimize this gap by capturing domain-specific characteristics directly from data. We observe that simulators and learned models have complementary strengths: simulators explicitly model transient physics but suffer from inaccurate persistent parameters, while learned models capture domain-specific characteristics but cannot infer discontinuously evolving hidden variables.
+            </p>
+            <p>
+              We propose <strong>World Translation</strong>, which combines these strengths by reformulating sim-to-real gap minimization as unpaired domain translation over learned dynamics features. Our approach consists of two stages: (1) <em>Backward Dynamics Extraction</em> encodes the effects of hidden variables from observed state transitions into a compact representation, using transition outcomes rather than forward prediction from history; (2) <em>Unpaired Domain Translation</em> maps these features across domains, preserving hidden variable semantics while transforming domain characteristics. This enables the simulator to serve as a source of hidden variable information while correcting for domain mismatch. Experiments on locomotion and manipulation tasks show that World Translation achieves more accurate dynamics modeling than baselines, with the largest gains when hidden variables evolve discontinuously.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Method -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Method</h2>
+
+      <!-- Overview figure -->
+      <div class="method-figure">
+        <img src="static/images/slide_overview.png" alt="World Translation overview: Extract-Translate-Reconstruct">
+      </div>
+      <p class="has-text-centered" style="margin-bottom:2rem; color:#555;">
+        World Translation operates on <em>dynamics features</em> extracted from transitions. During inference, simulation features are translated to the real domain and decoded to predict real-world outcomes.
+      </p>
+
+      <div class="columns">
+        <!-- BDE -->
+        <div class="column">
+          <h3 class="title is-4">Backward Dynamics Extraction</h3>
+          <div class="method-figure">
+            <img src="static/images/slide_pipeline.png" alt="Backward dynamics extraction pipeline" style="max-width:90%;">
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              Standard dynamics models predict forward from observation history. But <em>hidden variables</em> h<sub>t</sub> (contact, collision, external forces) evolve discontinuously — they cannot be anticipated from past observations.
+            </p>
+            <p>
+              Backward Dynamics Extraction instead uses the <em>transition outcome</em> o<sub>t+1</sub> to infer what happened: the encoder takes (o<sub>t</sub>, a<sub>t</sub>, o<sub>t+1</sub>) and produces z<sub>t</sub> = Φ(h<sub>t</sub>). The decoder then reconstructs o<sub>t+1</sub> from (o<sub>t</sub>, a<sub>t</sub>, z<sub>t</sub>) in a forward pass.
+            </p>
+          </div>
+        </div>
+
+        <!-- UDT -->
+        <div class="column">
+          <h3 class="title is-4">Unpaired Domain Translation</h3>
+          <div class="method-figure">
+            <img src="static/images/slide_latent_space.png" alt="Unpaired domain translation latent space" style="max-width:90%;">
+          </div>
+          <div class="content has-text-justified">
+            <p>
+              Backward extraction creates a circular dependency at test time: extracting z<sub>t</sub><sup>R</sup> requires real o<sub>t+1</sub><sup>R</sup>, which is exactly what we want to predict. We break this by using the <em>simulator as a source</em> of z<sub>t</sub><sup>S</sup>, then translating it to the real domain.
+            </p>
+            <p>
+              A CycleGAN maps z<sub>t</sub><sup>S</sup> ↔ z<sub>t</sub><sup>R</sup>, preserving hidden variable semantics (h<sub>t</sub>) while transforming domain characteristics (c<sup>S</sup> → c<sup>R</sup>). The UMAP above shows sim and real features before (separated) and after (aligned) translation.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- Results -->
+  <section class="section hero is-light">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Dynamics Modeling Results</h2>
+      <p class="has-text-centered" style="margin-bottom:0.5rem; color:#555;">
+        Each platform is evaluated in two conditions: <strong>low-h<sub>t</sub></strong> (predictable hidden variables) and <strong>high-h<sub>t</sub></strong> (discontinuous hidden variables). World Translation shows the largest gains in the high-h<sub>t</sub> setting.
+      </p>
+      <!-- Legend -->
+      <div style="display:flex; justify-content:center; margin-bottom:2rem;">
+        <img src="static/images/slide_legend.png" alt="Legend: DirectPred, RawSim, ResDyn, Ours" style="max-width:420px;">
+      </div>
+
+      <!-- G1 Humanoid -->
+      <div class="result-platform">
+        <p class="platform-title">G1 Humanoid — velocity tracking</p>
+        <div class="result-row">
+          <div style="flex:1; text-align:center;">
+            <img src="static/images/slide_g1_flat.png" alt="G1 flat terrain" loading="lazy" style="width:100%; border-radius:4px;">
+            <p class="condition-label"><strong>low-h<sub>t</sub></strong>: flat terrain</p>
+          </div>
+          <div style="flex:1; text-align:center;">
+            <img src="static/images/slide_g1_uneven.png" alt="G1 uneven terrain" loading="lazy" style="width:100%; border-radius:4px;">
+            <p class="condition-label"><strong>high-h<sub>t</sub></strong>: irregular stepping blocks</p>
+          </div>
+          <div class="chart-col">
+            <img src="static/images/slide_g1_chart.png" alt="G1 MSE results" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- Go2 Quadruped -->
+      <div class="result-platform">
+        <p class="platform-title">Go2 Quadruped — locomotion</p>
+        <div class="result-row">
+          <div style="flex:1; text-align:center;">
+            <img src="static/images/slide_go2_flat.png" alt="Go2 without payload" loading="lazy" style="width:100%; border-radius:4px;">
+            <p class="condition-label"><strong>low-h<sub>t</sub></strong>: no payload</p>
+          </div>
+          <div style="flex:1; text-align:center;">
+            <img src="static/images/slide_go2_payload.png" alt="Go2 with payload" loading="lazy" style="width:100%; border-radius:4px;">
+            <p class="condition-label"><strong>high-h<sub>t</sub></strong>: 5 kg ball in box</p>
+          </div>
+          <div class="chart-col">
+            <img src="static/images/slide_go2_chart.png" alt="Go2 MSE results" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+      <!-- R5 Manipulator -->
+      <div class="result-platform">
+        <p class="platform-title">R5 Manipulator — end-effector pose tracking</p>
+        <div class="result-row">
+          <div style="flex:1; text-align:center;">
+            <img src="static/images/slide_r5_normal.png" alt="R5 free space" loading="lazy" style="width:100%; border-radius:4px;">
+            <p class="condition-label"><strong>low-h<sub>t</sub></strong>: free space</p>
+          </div>
+          <div style="flex:1; text-align:center;">
+            <img src="static/images/slide_r5_force.png" alt="R5 external force" loading="lazy" style="width:100%; border-radius:4px;">
+            <p class="condition-label"><strong>high-h<sub>t</sub></strong>: 0–200 N external force</p>
+          </div>
+          <div class="chart-col">
+            <img src="static/images/slide_r5_chart.png" alt="R5 MSE results" loading="lazy">
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- Real Robot Deployment -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Real Robot Deployment</h2>
+      <p class="has-text-centered" style="margin-bottom:1.5rem; color:#555;">
+        Go2 quadruped carrying a 5 kg payload. World Translation is used as the dynamics model for policy rollout on the real robot.
+      </p>
+
+      <div class="deployment-photos">
+        <img src="static/images/slide_go2_real.png" alt="Go2 real deployment 1" loading="lazy">
+        <img src="static/images/slide_go2_real2.png" alt="Go2 real deployment 2" loading="lazy">
+        <img src="static/images/slide_go2_real3.png" alt="Go2 real deployment 3" loading="lazy">
+      </div>
+
+      <div style="display:flex; justify-content:center;">
+        <img src="static/images/slide_results_chart.png" alt="Angular velocity tracking on real Go2" loading="lazy" style="max-width:85%;">
+      </div>
+      <p class="has-text-centered" style="margin-top:0.75rem; color:#555; font-size:0.9rem;">
+        Angular velocity tracking on the real Go2 quadruped. World Translation (RMSE=0.179) outperforms Raw Simulation (0.247) and Domain Randomization (0.331).
+      </p>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template" target="_blank">Academic Project Page Template</a> which was adopted from the <a href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+              You are free to borrow the source code of this website, we just ask that you link back to this page in the footer. <br> This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  </main>
+</body>
+</html>
